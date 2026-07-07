@@ -1,0 +1,575 @@
+/* ===========================
+   Global
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body,
+#root{
+    width:100%;
+    height:100%;
+}
+
+body{
+    background:#0b1120;
+    color:#ffffff;
+    font-family:"Inter",sans-serif;
+    overflow:hidden;
+}
+
+button{
+    font-family:inherit;
+}
+
+/* ===========================
+   Main Layout
+=========================== */
+
+main{
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    padding:22px;
+    gap:22px;
+}
+
+/* ===========================
+   Navbar
+=========================== */
+
+.navbar{
+    height:72px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 28px;
+
+    border-radius:18px;
+
+    background:rgba(22,27,34,.92);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:
+    0 15px 45px rgba(0,0,0,.35);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    font-size:22px;
+    font-weight:700;
+    letter-spacing:.3px;
+}
+
+.logo-dot{
+    width:14px;
+    height:14px;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+        135deg,
+        #8b5cf6,
+        #3b82f6
+    );
+
+    box-shadow:
+    0 0 18px #8b5cf6;
+}
+
+.nav-buttons{
+    display:flex;
+    gap:14px;
+}
+
+/* ===========================
+   Workspace
+=========================== */
+
+.workspace{
+    flex:1;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:22px;
+
+    min-height:0;
+}
+
+/* ===========================
+   Panels
+=========================== */
+
+.left-panel,
+.right-panel{
+
+    min-height:0;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    background:#151b26;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    box-shadow:
+    0 15px 45px rgba(0,0,0,.35);
+
+    display:flex;
+    flex-direction:column;
+}
+
+/* ===========================
+   Monaco Container
+=========================== */
+
+.left-panel{
+
+    padding:18px;
+}
+
+.left-panel > div{
+
+    flex:1;
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.05);
+}
+
+/* ===========================
+   Right Panel
+=========================== */
+
+.right-panel{
+
+    padding:24px;
+    gap:18px;
+}
+
+/* ===========================
+   Review Header
+=========================== */
+
+.review-top{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.review-top h2{
+
+    font-size:22px;
+    font-weight:700;
+}
+
+/* ===========================
+   Review Body
+=========================== */
+
+.review-body{
+
+    flex:1;
+
+    overflow:auto;
+
+    background:#0f1625;
+
+    border-radius:16px;
+
+    padding:28px;
+
+    border:1px solid rgba(255,255,255,.05);
+}
+
+/* ===========================
+   Buttons
+=========================== */
+
+.primary-btn{
+
+    border:none;
+
+    cursor:pointer;
+
+    padding:13px 34px;
+
+    border-radius:12px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:white;
+
+    background:linear-gradient(
+        135deg,
+        #8b5cf6,
+        #6d28d9
+    );
+
+    transition:.25s;
+}
+
+.primary-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 12px 35px rgba(139,92,246,.45);
+}
+
+.primary-btn:disabled{
+
+    opacity:.7;
+
+    cursor:not-allowed;
+
+    transform:none;
+}
+
+.secondary-btn{
+
+    border:none;
+
+    cursor:pointer;
+
+    padding:13px 26px;
+
+    border-radius:12px;
+
+    background:#232c3d;
+
+    color:white;
+
+    font-size:15px;
+
+    transition:.25s;
+}
+
+.secondary-btn:hover{
+
+    background:#303b50;
+}
+
+/* ===========================
+   Scrollbar
+=========================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+    height:8px;
+}
+
+::-webkit-scrollbar-track{
+
+    background:transparent;
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#434f68;
+
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#5b6985;
+}
+
+/* ==========================================
+   Empty State
+========================================== */
+
+.empty{
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:#94a3b8;
+    padding:40px;
+}
+
+.empty-icon{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:34px;
+    margin-bottom:25px;
+    background:linear-gradient(135deg,#7c3aed,#3b82f6);
+    color:#fff;
+    box-shadow:0 15px 40px rgba(124,58,237,.35);
+}
+
+.empty h3{
+    font-size:28px;
+    color:#fff;
+    margin-bottom:15px;
+}
+
+.empty p{
+    max-width:500px;
+    line-height:1.8;
+    font-size:16px;
+}
+
+/* ==========================================
+   Loading
+========================================== */
+
+.loading{
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+}
+
+.spinner{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    border:5px solid rgba(255,255,255,.15);
+    border-top:5px solid #8b5cf6;
+    animation:spin 1s linear infinite;
+}
+
+.loading p{
+    font-size:17px;
+    color:#cbd5e1;
+}
+
+@keyframes spin{
+
+    100%{
+        transform:rotate(360deg);
+    }
+
+}
+
+/* ==========================================
+   Markdown
+========================================== */
+
+.review-body h1,
+.review-body h2,
+.review-body h3,
+.review-body h4,
+.review-body h5,
+.review-body h6{
+
+    margin:25px 0 14px;
+    color:#fff;
+    font-weight:700;
+}
+
+.review-body h1{
+    font-size:34px;
+}
+
+.review-body h2{
+    font-size:28px;
+}
+
+.review-body h3{
+    font-size:22px;
+}
+
+.review-body p{
+
+    margin:15px 0;
+    color:#d6d9df;
+    line-height:1.9;
+}
+
+.review-body strong{
+
+    color:#fff;
+}
+
+.review-body ul,
+.review-body ol{
+
+    margin:18px 0;
+    padding-left:28px;
+}
+
+.review-body li{
+
+    margin-bottom:12px;
+    line-height:1.8;
+}
+
+.review-body hr{
+
+    margin:30px 0;
+    border:none;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+.review-body a{
+
+    color:#60a5fa;
+    text-decoration:none;
+}
+
+.review-body a:hover{
+
+    text-decoration:underline;
+}
+
+/* ==========================================
+   Inline Code
+========================================== */
+
+.review-body code{
+
+    background:#20293b;
+    color:#7dd3fc;
+    padding:4px 8px;
+    border-radius:7px;
+    font-size:14px;
+    font-family:"JetBrains Mono",monospace;
+}
+
+/* ==========================================
+   Code Block
+========================================== */
+
+.review-body pre{
+
+    margin:20px 0;
+    padding:20px;
+    border-radius:14px;
+    overflow:auto;
+    background:#0d1320;
+    border:1px solid rgba(255,255,255,.05);
+}
+
+.review-body pre code{
+
+    background:transparent;
+    color:#e2e8f0;
+    padding:0;
+}
+
+/* ==========================================
+   Blockquote
+========================================== */
+
+.review-body blockquote{
+
+    margin:20px 0;
+    padding:18px 22px;
+
+    border-left:4px solid #8b5cf6;
+
+    background:#1a2233;
+
+    border-radius:10px;
+
+    color:#cbd5e1;
+}
+
+/* ==========================================
+   Table
+========================================== */
+
+.review-body table{
+
+    width:100%;
+    border-collapse:collapse;
+    margin:20px 0;
+}
+
+.review-body th{
+
+    background:#1e293b;
+    color:#fff;
+    padding:14px;
+    text-align:left;
+}
+
+.review-body td{
+
+    padding:14px;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+/* ==========================================
+   Responsive
+========================================== */
+
+@media(max-width:1100px){
+
+    .workspace{
+
+        grid-template-columns:1fr;
+    }
+
+    .left-panel,
+    .right-panel{
+
+        height:50%;
+    }
+
+}
+
+@media(max-width:700px){
+
+    main{
+
+        padding:12px;
+        gap:12px;
+    }
+
+    .navbar{
+
+        padding:0 18px;
+    }
+
+    .logo{
+
+        font-size:18px;
+    }
+
+    .review-top h2{
+
+        font-size:20px;
+    }
+
+    .primary-btn,
+    .secondary-btn{
+
+        padding:11px 18px;
+        font-size:14px;
+    }
+
+}
